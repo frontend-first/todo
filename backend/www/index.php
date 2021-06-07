@@ -17,8 +17,8 @@
             echo json_encode($value, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
         },
         'error' => function($message, $status) {
-            $this->response->status = $status;
-            echo json_encode(["error" => $message]);
+            $this->status = $status;
+            echo json_encode(["error" => $message])."\n";
         }
     ]);
     
@@ -40,6 +40,7 @@
     
     $dbConf     = getenv('arc-rest-store');
     $arcStore   = \arc\store::connect($dbConf);
+    $arcStore->initialize();
 
     function uuidv4(){
         $data = random_bytes(16);
@@ -154,7 +155,7 @@
         $arcResponse->addHeader('Access-Control-Allow-Headers','Authorization');
         $arcResponse->addHeader('Access-Control-Allow-Credentials','true');
 
-        $path = \arc\path::collapse($_SERVER['PATH_INFO'] ?: $arcRequest->url->path);
+        $path = \arc\path::collapse($_SERVER['PATH_INFO'] ?? '/');
         $restAPI->{strtolower($arcRequest->method)}($path);
 
     } catch (\arc\MethodNotFound $err) {
