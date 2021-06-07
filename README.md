@@ -41,6 +41,19 @@ This is about as simple an application that you can make and still be an applica
 showcase the first steps in a frontend-first approach. Other repositories will appear later that will 
 expand on this example to show how you grow from a first prototype.
 
+## Quickstart
+
+This example uses Docker Compose to start the frontend, backend and database. It also starts a front proxy, called
+Traefik, that will allow you to add security and API management features later.
+
+The todo app and backend use the `todo.local` and `backend.local` names. To open these in your browser, add these
+names to your hosts file as `127.0.0.1`, or add `*.local`.
+
+Make sure you aren't running a webserver on port 80 locally, then start the services from the root of the repository:
+```
+docker-compose up
+```
+
 ## Backend
 
 The backend is a simple REST api that doesn't require any configuration. You can add any content to it
