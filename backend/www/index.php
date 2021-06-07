@@ -21,7 +21,7 @@
             echo json_encode(["error" => $message])."\n";
         }
     ]);
-    
+
     header_register_callback(function() use ($arcResponse) {
         http_response_code($arcResponse->status);
         foreach($arcResponse->headers as $header => $headerValues) {
@@ -112,8 +112,8 @@
             // store it in the given path
             $parents = \arc\path::parents(\arc\path::parent($path));
             foreach ($parents as $parent) {
-                if (!$store->exists($parent)) {
-                    $store->save(null, $parent);
+                if (!$arcStore->exists($parent)) {
+                    $arcStore->save(null, $parent);
                 }
             }
 
