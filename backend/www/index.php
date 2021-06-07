@@ -145,14 +145,14 @@
     try {
         
         $arcResponse->addHeader('Content-Type', 'application/json');
-        $origin = $arcRequest->headers['origin'] ?? false;
+        $origin = $arcRequest->headers['Origin'] ?? false;
         if ($origin) {
             $arcResponse->addHeader('Access-Control-Allow-Origin','*');
         } else {
             $arcResponse->addHeader('Access-Control-Allow-Origin',$origin);
         }
         $arcResponse->addHeader('Access-Control-Allow-Methods','POST,GET,PUT,DELETE');
-        $arcResponse->addHeader('Access-Control-Allow-Headers','Authorization');
+        $arcResponse->addHeader('Access-Control-Allow-Headers','Authorization,Content-Type');
         $arcResponse->addHeader('Access-Control-Allow-Credentials','true');
 
         $path = \arc\path::collapse($_SERVER['PATH_INFO'] ?? '/');
