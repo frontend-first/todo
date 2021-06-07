@@ -40,3 +40,27 @@ Ideally you don't have to define routes and models early on.
 This is about as simple an application that you can make and still be an application. It is meant to
 showcase the first steps in a frontend-first approach. Other repositories will appear later that will 
 expand on this example to show how you grow from a first prototype.
+
+## Backend
+
+The backend is a simple REST api that doesn't require any configuration. You can add any content to it
+without needing a model or configuration. It also has no security, so only use it for prototypes.
+
+### Usage
+
+Get contents
+`curl http://backend.local/`
+
+Create content
+`curl -X POST -d '{"foo":"bar"}' http://backend.local/`
+
+Update or create content
+`curl -X PUT -d '{"foo":"bar","bar":"baz"}' http://backend.local/95c689ea-9f42-4b89-b0ee-f4a8ea5f081d/`
+
+Update content
+`curl -X PATCH -d '{"bar":"bazzz"}' http://backend.local/95c689ea-9f42-4b89-b0ee-f4a8ea5f081d/`
+
+Delete content
+`curl -X DELETE http://backend.local/95c689ea-9f42-4b89-b0ee-f4a8ea5f081d/`
+
+
